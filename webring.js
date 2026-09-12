@@ -10,8 +10,8 @@
     :host { display: block; }
 
     nav {
-      background: #010102;
-      border-top: 1px solid rgba(255,255,255,0.08);
+      background: #e63225;
+      border-top: 1px solid rgba(0,0,0,0.15);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -26,10 +26,10 @@
       font-size: 9px;
       text-transform: uppercase;
       letter-spacing: 0.25em;
-      color: rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.6);
       padding-right: 1.25rem;
       margin-right: 0.25rem;
-      border-right: 1px solid rgba(255,255,255,0.1);
+      border-right: 1px solid rgba(255,255,255,0.3);
       white-space: nowrap;
       user-select: none;
       flex-shrink: 0;
@@ -55,15 +55,15 @@
     }
 
     a {
-      color: rgba(255,255,255,0.38);
+      color: rgba(255,255,255,0.7);
       text-decoration: none;
       transition: color 0.15s;
     }
 
-    a:hover { color: rgba(255,255,255,0.85); }
+    a:hover { color: #fff; }
 
     span.current {
-      color: rgba(255,255,255,0.85);
+      color: #fff;
       cursor: default;
     }
 
@@ -78,7 +78,7 @@
     }
 
     .dot {
-      color: rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.35);
       font-size: 14px;
       line-height: 1;
       pointer-events: none;
