@@ -22,6 +22,9 @@
     }
 
     .label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
       font-family: 'Courier New', Courier, monospace;
       font-size: 9px;
       text-transform: uppercase;
@@ -31,8 +34,27 @@
       margin-right: 0.25rem;
       border-right: 1px solid rgba(255,255,255,0.3);
       white-space: nowrap;
-      user-select: none;
       flex-shrink: 0;
+    }
+
+    .arrow {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 0;
+      padding: 0.2em 0.25em;
+      border-radius: 2px;
+      transition: color 0.15s, background 0.15s;
+      line-height: 1;
+    }
+
+    .arrow:hover {
+      color: #fff;
+      background: rgba(0,0,0,0.15);
+    }
+
+    .label-text {
+      user-select: none;
     }
 
     .sites {
@@ -42,7 +64,7 @@
       justify-content: center;
     }
 
-    a, span.current {
+    a.site-link, span.current {
       font-family: 'Courier New', Courier, monospace;
       font-size: 10px;
       text-transform: uppercase;
@@ -54,13 +76,13 @@
       align-items: center;
     }
 
-    a {
+    a.site-link {
       color: rgba(255,255,255,0.7);
       text-decoration: none;
       transition: color 0.15s;
     }
 
-    a:hover { color: #fff; }
+    a.site-link:hover { color: #fff; }
 
     span.current {
       color: #fff;
@@ -89,18 +111,21 @@
   class MackWebring extends HTMLElement {
     static get observedAttributes() { return ['active']; }
 
-    connectedCallback()            { this._render(); }
-    attributeChangedCallback()     { if (this.shadowRoot) this._render(); }
+    connectedCallback()        { this._render(); }
+    attributeChangedCallback() { if (this.shadowRoot) this._render(); }
 
     _render() {
-      const active = (this.getAttribute('active') || '').toLowerCase().trim();
-      const root   = this.shadowRoot || this.attachShadow({ mode: 'open' });
+      const active       = (this.getAttribute('active') || '').toLowerCase().trim();
+      const currentIndex = SITES.findIndex(s => s.id === active);
+      const prevSite     = SITES[(currentIndex - 1 + SITES.length) % SITES.length];
+      const nextSite     = SITES[(currentIndex + 1) % SITES.length];
+      const root         = this.shadowRoot || this.attachShadow({ mode: 'open' });
 
       const items = SITES.flatMap((site, i) => {
         const isActive = site.id === active;
         const el = isActive
           ? `<span class="current" aria-current="page">${site.label}</span>`
-          : `<a href="${site.url}" target="_blank" rel="noopener noreferrer">${site.label}</a>`;
+          : `<a class="site-link" href="${site.url}" target="_blank" rel="noopener noreferrer">${site.label}</a>`;
         const dot = i < SITES.length - 1 ? `<span class="dot" aria-hidden="true">·</span>` : '';
         return [el, dot];
       }).join('');
@@ -108,7 +133,11 @@
       root.innerHTML = `
         <style>${CSS}</style>
         <nav aria-label="Mack Richardson site network">
-          <span class="label">◄ Mack's Web ►</span>
+          <span class="label">
+            <a class="arrow" href="${prevSite.url}" target="_blank" rel="noopener noreferrer" aria-label="Previous site: ${prevSite.label}">◄</a>
+            <span class="label-text">Mack's Web</span>
+            <a class="arrow" href="${nextSite.url}" target="_blank" rel="noopener noreferrer" aria-label="Next site: ${nextSite.label}">►</a>
+          </span>
           <div class="sites">${items}</div>
         </nav>
       `;
