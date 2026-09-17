@@ -9,6 +9,8 @@
   const CSS = `
     :host { display: block; }
 
+    a { text-decoration: none; }
+
     nav {
       background: var(--webring-bg, #e63225);
       border-top: 1px solid var(--webring-border-top, rgba(0,0,0,0.15));
@@ -38,7 +40,7 @@
     }
 
     .arrow {
-      color: var(--webring-arrow-color, rgba(255,255,255,0.75));
+      color: var(--webring-arrow-color, #fff);
       text-decoration: none;
       font-size: 11px;
       letter-spacing: 0;
@@ -49,7 +51,7 @@
     }
 
     .arrow:hover {
-      color: var(--webring-arrow-hover-color, #fff);
+      color: var(--webring-arrow-hover-color, #f5ea2c);
       background: var(--webring-arrow-hover-bg, rgba(0,0,0,0.15));
     }
 
@@ -77,15 +79,15 @@
     }
 
     a.site-link {
-      color: var(--webring-link-color, rgba(255,255,255,0.7));
+      color: var(--webring-link-color, rgba(255,255,255,0.9));
       text-decoration: none;
       transition: color 0.15s;
     }
 
-    a.site-link:hover { color: var(--webring-link-hover, #fff); }
+    a.site-link:hover { color: var(--webring-link-hover, #f5ea2c); }
 
     span.current {
-      color: var(--webring-active-color, #fff);
+      color: var(--webring-active-color, #f5ea2c);
       cursor: default;
     }
 
@@ -96,7 +98,7 @@
       left: 0.75rem;
       right: 0.75rem;
       height: 1px;
-      background: var(--webring-active-underline, rgba(255,255,255,0.5));
+      background: var(--webring-active-underline, rgba(245,234,44,0.6));
     }
 
     .dot {
