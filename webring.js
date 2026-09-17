@@ -10,8 +10,8 @@
     :host { display: block; }
 
     nav {
-      background: #e63225;
-      border-top: 1px solid rgba(0,0,0,0.15);
+      background: var(--webring-bg, #e63225);
+      border-top: 1px solid var(--webring-border-top, rgba(0,0,0,0.15));
       display: flex;
       align-items: center;
       justify-content: center;
@@ -25,20 +25,20 @@
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      font-family: 'Courier New', Courier, monospace;
+      font-family: var(--webring-font, 'Courier New', Courier, monospace);
       font-size: 9px;
       text-transform: uppercase;
       letter-spacing: 0.25em;
-      color: rgba(255,255,255,0.6);
+      color: var(--webring-label-color, rgba(255,255,255,0.6));
       padding-right: 1.25rem;
       margin-right: 0.25rem;
-      border-right: 1px solid rgba(255,255,255,0.3);
+      border-right: 1px solid var(--webring-label-border, rgba(255,255,255,0.3));
       white-space: nowrap;
       flex-shrink: 0;
     }
 
     .arrow {
-      color: rgba(255,255,255,0.75);
+      color: var(--webring-arrow-color, rgba(255,255,255,0.75));
       text-decoration: none;
       font-size: 11px;
       letter-spacing: 0;
@@ -49,8 +49,8 @@
     }
 
     .arrow:hover {
-      color: #fff;
-      background: rgba(0,0,0,0.15);
+      color: var(--webring-arrow-hover-color, #fff);
+      background: var(--webring-arrow-hover-bg, rgba(0,0,0,0.15));
     }
 
     .label-text {
@@ -65,7 +65,7 @@
     }
 
     a.site-link, span.current {
-      font-family: 'Courier New', Courier, monospace;
+      font-family: var(--webring-font, 'Courier New', Courier, monospace);
       font-size: 10px;
       text-transform: uppercase;
       letter-spacing: 0.12em;
@@ -77,15 +77,15 @@
     }
 
     a.site-link {
-      color: rgba(255,255,255,0.7);
+      color: var(--webring-link-color, rgba(255,255,255,0.7));
       text-decoration: none;
       transition: color 0.15s;
     }
 
-    a.site-link:hover { color: #fff; }
+    a.site-link:hover { color: var(--webring-link-hover, #fff); }
 
     span.current {
-      color: #fff;
+      color: var(--webring-active-color, #fff);
       cursor: default;
     }
 
@@ -96,11 +96,11 @@
       left: 0.75rem;
       right: 0.75rem;
       height: 1px;
-      background: rgba(255,255,255,0.5);
+      background: var(--webring-active-underline, rgba(255,255,255,0.5));
     }
 
     .dot {
-      color: rgba(255,255,255,0.35);
+      color: var(--webring-dot-color, rgba(255,255,255,0.35));
       font-size: 14px;
       line-height: 1;
       pointer-events: none;
