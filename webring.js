@@ -108,6 +108,18 @@
       pointer-events: none;
       user-select: none;
     }
+
+    @media (max-width: 640px) {
+      nav {
+        padding: 0.5rem 1.25rem;
+        min-height: 52px;
+      }
+      .label {
+        border-right: none;
+        padding-right: 0.75rem;
+        margin-right: 0;
+      }
+    }
   `;
 
   class MackWebring extends HTMLElement {
