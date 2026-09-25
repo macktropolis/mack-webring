@@ -139,7 +139,7 @@
         const isActive = site.id === active;
         const el = isActive
           ? `<span class="current" aria-current="page">${site.label}</span>`
-          : `<a class="site-link" href="${site.url}" target="_blank" rel="noopener noreferrer">${site.label}</a>`;
+          : `<a class="site-link" href="${site.url}">${site.label}</a>`;
         const dot = i < SITES.length - 1 ? `<span class="dot" aria-hidden="true">·</span>` : '';
         return [el, dot];
       }).join('');
@@ -148,9 +148,9 @@
         <style>${CSS}</style>
         <nav aria-label="Mack Richardson site network">
           <span class="label">
-            <a class="arrow" href="${prevSite.url}" target="_blank" rel="noopener noreferrer" aria-label="Previous site: ${prevSite.label}">◄</a>
+            <a class="arrow" href="${prevSite.url}" aria-label="Previous site: ${prevSite.label}">◄</a>
             <span class="label-text">Mack's Web</span>
-            <a class="arrow" href="${nextSite.url}" target="_blank" rel="noopener noreferrer" aria-label="Next site: ${nextSite.label}">►</a>
+            <a class="arrow" href="${nextSite.url}" aria-label="Next site: ${nextSite.label}">►</a>
           </span>
           <div class="sites">${items}</div>
         </nav>
